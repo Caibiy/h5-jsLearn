@@ -1,1 +1,1 @@
-- Project about h5&js
+- Project about study
