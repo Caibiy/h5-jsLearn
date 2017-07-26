@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Icon Animate</title>
+        <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        #battery{
+            font-size: 60px;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="battery" class="fa"></div>
+        <script>
+            let battery=document.getElementById("battery");
+        
+            function Battery(){
+                battery.innerHTML="&#xf244;";
+                            setTimeout(function(){
+                    battery.innerHTML="&#xf243;";
+                },1000);
+            setTimeout(function(){
+                    battery.innerHTML="&#xf242;";
+                },2000);
+            setTimeout(function(){
+                    battery.innerHTML="&#xf240;";
+                },3000);
+            }
+
+            Battery();
+            setInterval(Battery,4000);
+        </script>
+    </body>
+</html>

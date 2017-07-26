@@ -13,31 +13,23 @@ body, html{
 .pimg1, .pimg2, .pimg3{
   position:relative;
   opacity:0.70;
+  background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
 .pimg1 {
     min-height: 100%;
-    background: url("../img/1.jpeg");
-      background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+    background-image: url("../img/1.jpeg");
 }
 .pimg2{
     min-height: 598px;
-    background:url("../img/2.jpeg");
-      background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+    background-image:url("../img/2.jpeg");
 }
 .pimg3{
     min-height: 598px;
-    background:url("../img/3.jpeg");
-      background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+    background-image:url("../img/3.jpeg");
 }
 .ptext{
     font-size: 24px;
