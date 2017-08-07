@@ -1,1 +1,4 @@
 - Project about stud h5&Javascript
+- AnimateIcon-----图标动画
+- CustomModal----自定义组件(Dialog)
+- parallaxWebSite------视觉差效果
