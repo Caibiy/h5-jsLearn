@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>星级评分</title>
+<style>
+	body,ul,li {
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style-type: none;
+	}
+	.rating{
+		width: 200px;
+		height: 40px;
+		margin: 100px auto;
+	}
+	.rating-item{
+		float: left;
+		width: 40px;
+		height: 40px;
+		background: url("img/star.png") no-repeat;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+<!-- 第一种实现方式 -->
+<ul class="rating" id="rating">
+	<li class="rating-item" title="很不好"></li>
+	<li class="rating-item" title="不好"></li>
+	<li class="rating-item" title="一般"></li>
+	<li class="rating-item" title="好"></li>
+	<li class="rating-item" title="很好"></li>
+</ul>
+<ul class="rating" id="rating2">
+	<li class="rating-item" title="很不好"></li>
+	<li class="rating-item" title="不好"></li>
+	<li class="rating-item" title="一般"></li>
+	<li class="rating-item" title="好"></li>
+	<li class="rating-item" title="很好"></li>
+</ul>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js" ></script>
+<script>
+	var rating = (function(){
+		//整颗星星
+		var LightEntire = function(el,options){
+			this.$el=$(el);
+			this.$item=this.$el.find('.rating-item');
+			this.opt=options;
+		};
+		//初始化
+		LightEntire.prototype.init = function(){
+			this.lightOn(this.opt.num);
+			if(!this.opt.readOnly){
+				this.bindEvent();
+			}
+		}
+		//点亮
+		LightEntire.prototype.lightOn = function(num){
+			var self = this;
+			var n = num || self.opt.num;
+			this.$item.each(function(index){
+				if(index<n){
+					$(this).css('background-position','0 -40px');
+				}else{
+					$(this).css('background-position','0 0');
+				}
+			})
+		}
+		//绑定事件
+		LightEntire.prototype.bindEvent = function(){
+			var self = this;
+				itemLength = self.$item.length;
+			this.$el.on('mouseover','.rating-item',function(){
+				var num = $(this).index()+1;
+				self.lightOn(num);
+				(typeof self.opt.select ==='function') && self.opt.select.call(this,num,itemLength)
+				self.$el.trigger('select',[self.opt.num,itemLength]);
+			}).on('mouseout',function(){
+				self.lightOn();
+			}).on('click','.rating-item',function(){
+				self.opt.num=$(this).index()+1;
+				(typeof self.opt.select ==='function') && self.opt.chosen.call(this,self.opt.num,itemLength)
+				self.$el.trigger('chosen',[self.opt.num,itemLength]);
+			});
+		}
+		//整颗星星
+		var LightHalf = function(el,options){
+			this.$el=$(el);
+			this.$item=this.$el.find('.rating-item');
+			this.opt=options;
+			this.add=1;
+		};
+		//初始化
+		LightHalf.prototype.init = function(){
+			this.lightOn(this.opt.num);
+			if(!this.opt.readOnly){
+				this.bindEvent();
+			}
+		}
+		//点亮
+		LightHalf.prototype.lightOn = function(num){
+			var self = this,
+				count = parseInt(num),
+				isHalf = count!==num,
+			    n = num || self.opt.num;
+			self.$item.each(function(index){
+				if(index<n){
+					$(this).css('background-position','0 -40px');
+				}else{
+					$(this).css('background-position','0 0');
+				}
+			})
+			if(isHalf){
+				$(self.$item).eq(count).css('background-position','0 -80px');
+			}
+		}
+		//绑定事件
+		LightHalf.prototype.bindEvent = function(){
+			var self = this;
+				itemLength = self.$item.length;
+
+			this.$el.on('mousemove','.rating-item',function(e){
+				var num = 0,
+					$this = $(this);
+				if(e.pageX-$this.offset().left < $this.width()/2){
+					self.add=0.5;
+				}else{
+					self.add=1;
+				}
+				num = $this.index()+self.add;
+				self.lightOn(num);
+				(typeof self.opt.select ==='function') && self.opt.select.call(this,num,itemLength)
+				self.$el.trigger('select',[self.opt.num,itemLength]);
+			}).on('mouseout',function(){
+				self.lightOn(self.opt.num);
+			}).on('click','.rating-item',function(){
+				self.opt.num=$(this).index()+self.add;
+				(typeof self.opt.select ==='function') && self.opt.chosen.call(this,self.opt.num,itemLength)
+				self.$el.trigger('chosen',[self.opt.num,itemLength]);
+			});
+		}
+
+		//默认配置
+		var defaults={
+			num:5,
+			mode:"LightEntire",
+			readOnly:false,
+			select:function(){},
+			chosen:function(){}
+		}
+		var mode={
+			"LightEntire":LightEntire,
+			"LightHalf":LightHalf
+		}
+		//初始化方法
+		var init = function(el,options){
+			options=$.extend({},defaults,options)
+			if(!mode[options.mode]){
+				new mode["LightEntire"](el,options).init()
+			}else{
+				new mode[options.mode](el,options).init()
+			}
+			
+		};
+		
+		return {init:init};
+	})();
+	rating.init('#rating',{mode:"LightHalf",num:2.5,select:function(num,itemLength){
+		//console.log(this);
+		//console.log(num+'/'+itemLength);
+	}})
+	$('#rating').on('select',function(e,num,total){
+
+	}).on('chosen',function(e,num,total){
+		console.log('chosen:'+num)
+	});
+</script>
+</body>
+</html>
