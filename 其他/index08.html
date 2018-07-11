@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>放大镜效果</title>
+<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		position:relative;
+		border:1px solid #ccc;
+		width:220px;
+		margin:10px;
+	}
+	.big{
+		position: absolute;
+		width:400px;
+		height:400px;
+		top:0;
+		left:240px;
+		overflow: hidden;
+		display: none;
+		border:1px solid #ccc;
+	}
+	.small{
+		position: relative;
+	}
+	.mask{
+		width:100px;
+		height:100px;
+		background: rgba(255,0,0,0.1);
+		position: absolute;
+		top:0;
+		left:0;
+		cursor:move;
+	}
+	img{
+		vertical-align: top;
+	}
+</style>
+</head>
+<body>
+<div class="box">
+	<div class="small">
+		<img src="./images/small.jpg">
+		<div class="mask"></div>
+	</div>
+	<div class="big">
+		<img src="./images/big.jpg">
+	</div>
+</div>
+<script src="./tools.js"></script>
+<script type="text/javascript">
+	var box = document.getElementsByClassName("box")[0],
+		small = box.firstElementChild || box.firstChild,
+		smallImg = small.firstElementChild || small.firstChild,
+		big = box.lastElementChild || box.lastChild,
+		bigImg = big.firstElementChild || big.firstChild,
+		mask = document.getElementsByClassName("mask")[0];
+	small.onmouseover = function(){
+		show(mask);
+		show(big);
+	};
+	small.onmouseout = function(){
+		hide(mask);
+		hide(big);
+	};
+	small.onmousemove = function(event){
+		var pageX = event.pageX || scroll().top + event.clientX;
+		var	pageY = event.pageY || scroll().left + event.clientY; 
+		
+		var x = pageX - box.offsetLeft - (mask.offsetWidth/2);
+		if(x < 0){
+			x = 0;
+		} 
+		if(x > small.offsetWidth - mask.offsetWidth){
+			x = small.offsetWidth - mask.offsetWidth;
+		}
+		
+		var y = pageY - box.offsetTop - (mask.offsetHeight/2);
+		if(y < 0){
+			y = 0;
+		}
+		if(y > small.offsetHeight - mask.offsetHeight){
+			y = small.offsetHeight - mask.offsetHeight;
+		}
+
+		mask.style.left = x + "px";
+		mask.style.top = y + "px";
+		
+		var bili = bigImg.offsetWidth / smallImg.offsetWidth
+		bigImg.style.marginTop = -(y * bili) + "px";
+		bigImg.style.marginLeft = -(x * bili) + "px";
+
+	};
+</script>
+
+</body>
+</html>

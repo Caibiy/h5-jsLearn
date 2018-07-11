@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>缓慢移动原理</title>
+<style>
+	.img1{
+		width:100px;
+		height:100px;
+		padding:10px 0;
+		background-color:green;
+		position:absolute;
+		cursor:pointer;
+	}
+</style>
+</head>
+<body>
+	<img  class="img1" src="" alt="" />
+<script type="text/javascript">
+	
+	var img=document.getElementsByClassName("img1")[0];
+	console.log(img.offsetLeft)
+	var timer=null;
+	var targetX=0;
+	var targetY=0;
+	var leaderX=0;
+	var leaderY=0;
+	document.addEventListener("click",function(event){
+		event = event || window.event;//兼容ie6-8
+		var pageX = event.pageX || scroll().left+event.clientX;
+		var pageY = event.pageY || scroll().top+event.clientY;
+
+		targetX = pageX - 50;
+		targetY = pageY - 60;
+		clearInterval(timer);
+		timer = setInterval(function(){
+			leaderX = img.offsetLeft;
+			var stepX = (targetX - leaderX) / 10;
+			stepX = stepX > 0 ? Math.ceil(stepX) : Math.floor(stepX);
+			leaderX = leaderX + stepX;
+			img.style.left = leaderX + "px";
+
+			leaderY = img.offsetTop;
+			var stepY = (targetY- leaderY) / 10;
+			stepY = stepY > 0 ? Math.ceil(stepY) : Math.floor(stepY);
+			leaderY = leaderY + stepY;
+			img.style.top = leaderY + "px";
+
+			if(Math.abs(targetX - img.offsetLeft)<=Math.abs(stepX) && Math.abs(targetY-img.offsetTop)<=Math.abs(stepY)){
+				img.style.left=targetX+"px";
+				img.style.top=targetY+"px";
+				
+				clearInterval(timer);
+			}
+		},30);
+	});
+</script>
+</body>
+</html>

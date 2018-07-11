@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>title</title>
+<style type="text/css">
+	.box{
+		width:200px;
+		height:200px;
+		background-color:pink;
+	}
+	#box1{
+		width: 100px;
+		height: 100px;
+		background-color: blue;
+	}
+</style>
+</head>
+<body>
+<div class="box">
+	
+</div>
+<div id="box1">
+	
+</div>
+<script type="text/javascript">
+	window.onload=function(){
+		var box = document.getElementsByClassName("box")[0];
+		var box1 = document.getElementById("box1");
+		box.onclick=function(){
+			box.style.width="500px";
+			box.style.height="500px";
+			box.style.backgroundColor="blue";
+		}
+		box1.addEventListener("click",f1);
+		box1.addEventListener("click",f2);
+	}
+	function f1(){
+		console.log("function1");
+	}
+	function f2(){
+		console.log("function2");
+	}
+</script>
+</body>
+</html>
