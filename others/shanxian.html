@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闪现</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-size:16px;
+		}
+		a{
+			text-decoration: none;
+			color:#fff;
+			font-size:1rem;
+		}
+		.btn{
+			padding:0.5rem 0.8rem;
+			border-radius:0.5rem;
+			background-color:orange;
+			margin:1rem;
+			display:inline-block;
+			cursor: pointer;
+		}
+		.box{
+			width:10rem;
+			height:10rem;
+			border-radius: 0.5rem;
+			background-color:pink;
+			position:absolute;
+			left:1rem;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" id="btn" class="btn">点我</a>
+	<div class="box" id="box_t"></div>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		var box_t = document.getElementById("box_t");
+		btn.onclick = function(){
+			var t=4;
+			var timer = setInterval(function(){
+				var left = box_t.offsetLeft;
+				if(t>0){
+					box_t.style.left=left/16+1+"rem";
+					t--;
+				}else{
+					clearInterval(timer);
+				}
+			},500)
+		}
+	</script>
+</body>
+</html>

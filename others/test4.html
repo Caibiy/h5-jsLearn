@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.txt-box{
+			height: 24px;
+			line-height: 24px;
+			font-size: 12px;
+			overflow: hidden;
+			transition: all 0.5s;
+			padding-top:8px;
+			position: relative;
+		}
+		.txt-container:nth-child(n+2){
+			margin-top:8px;
+			transition: all 0.8s;
+		}
+		.txt-box .txt-container p{
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			background:rgba(0,0,0,.55);
+			color:#fff;
+			border-radius: 24px;
+			display: inline-block;
+			padding:0 15px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="txt-box">
+		<div class="txt-container">
+		<p>
+			<span>你爹:</span>
+			<em>快去学习</em>
+		</p>
+		</div>
+		<div class="txt-container">
+			<p>
+				<span>你妈:</span>
+				<em>快去学习</em>
+			</p>
+		</div>
+		<div class="txt-container">
+			<p>
+				<span>你奶奶:</span>
+				<em>快去学习</em>
+			</p>
+		</div>
+		<div class="txt-container">
+		<p>
+			<span>你爹:</span>
+			<em>快去学习</em>
+		</p>
+		</div>
+		<div class="txt-container">
+			<p>
+				<span>你妈:</span>
+				<em>快去学习</em>
+			</p>
+		</div>
+		<div class="txt-container">
+			<p>
+				<span>你奶奶:</span>
+				<em>快去学习</em>
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var box = document.querySelectorAll(".txt-container");
+		var t = 0;
+		[].map.call(box,function(va){
+			console.log(va);
+			va.timer = setInterval(function(){
+				t-=1;
+				va.style.transform = "translateY("+t+"px)";
+			},1000)
+		});
+		/*
+			ajax get请求
+		*/
+		function ajax_get(url,param){
+			var ajax = new XMLHttpRequest();
+			if(param){
+				url+="?"+param;
+			}
+			ajax.open("get",url);
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState==4&&ajax.status==200){
+					console.log(ajax.responseText);
+				}
+			}
+		}
+		function ajax_post(url,param){
+			var ajax = new XMLHttpRequest();
+			ajax.open("post",url)
+			ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			if(param){
+				ajax.send(param)
+			}else{
+				ajax.send();
+			}
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState==4&&ajax.status==200){
+					console.log(ajax.responseText);
+				}
+			}
+		}
+		function ajax_tool(url,param,type){
+
+		}
+	</script>
+</body>
+</html>

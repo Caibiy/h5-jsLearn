@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航控件</title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	</style>
+</head>
+<body>
+	<nav id="nav">
+	</nav>
+	<script type="text/javascript">
+		var nav = function(){
+			var NAV = function(el,options){
+				if(!options.navs){
+					throw "导航不能为空";
+				}
+				if(options.navs.length!=options.txt.length){
+					throw "超链接数量应该对应";
+				}
+				this.el = el;
+				this.options = options;
+			}
+			var defaultCSS = {
+				ul:"list-style: none;width:100%;overflow: hidden;background-color:#888;",
+				a:"	text-decoration: none;display: inline-block;padding:8px 14px;margin:0 8px;color:#fff;transition: all 0.5s;",
+				mocolor:"pink",
+				fl:"left",
+				fr:"right"
+			}
+			NAV.prototype.render = function(){
+				var _ = this;
+				var ul = document.createElement("ul");
+				ul.style.cssText = defaultCSS.ul;
+				for(var i=0;i<_.options.navs.length;i++){
+					var li = document.createElement("li");
+					var a = document.createElement("a");
+					var t = document.createTextNode(_.options.txt[i]);
+					li.style.float = defaultCSS[_.options.class[i]];
+					a.setAttribute("href",_.options.navs[i]);
+					a.style.cssText = defaultCSS.a;
+					a.addEventListener("click",function(){
+						typeof _.options.select == "function"&&_.options.select.call(this);
+					});
+					a.addEventListener("mouseover",function(){
+						this.style.background = defaultCSS.mocolor;
+					})
+					a.addEventListener("mouseout",function(){
+						this.style.background = "";
+					})
+					a.append(t);
+					li.append(a);
+					ul.append(li);
+				}
+				_.el.append(ul);
+			}
+			NAV.prototype.init = function(){
+				var _ = this;
+				_.render();
+			}
+			var init = function(el,options){
+				var nav = new NAV(el,options);
+				nav.init();
+			}
+			return {init:init};
+		}();
+		var na = document.querySelector("#nav");
+		nav.init(na,{navs:["#","#"],txt:["首页","关于"],class:["fl","fr"],style:{ul:"",li:""},select:function(){
+			console.log(this)
+		}});
+	</script>
+</body>
+</html>

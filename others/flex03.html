@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置子元素在侧轴上对齐方式</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+			padding:8px;
+			border:1px solid #ccc;
+			height:500px;
+		}
+		ul li {
+			width:200px;
+			height:200px;
+			background:pink;
+			margin-left:8px;
+		}
+		section{
+			width:1200px;
+			margin:0 auto;
+		}
+		section ul{
+			display: flex;
+		}
+		section:nth-child(1) ul{
+			align-items: flex-start;
+		}
+		section:nth-child(2) ul{
+			align-items: flex-end;
+		}
+		section:nth-child(3) ul{
+			align-items: baseline;
+		}
+		section:nth-child(4) ul{
+			align-items: center;
+		}
+		section:nth-child(5) ul{
+			align-items:stretch;
+		}
+		section:nth-child(5) ul li {
+			height:auto;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h3>在侧轴上flex-start</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>在侧轴上flex-end</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>在侧轴上baseline</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>在侧轴上center</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>在侧轴上stretch</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+</body>
+</html>

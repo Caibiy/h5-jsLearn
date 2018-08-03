@@ -125,6 +125,7 @@
 			this.$el.on('mousemove','.rating-item',function(e){
 				var num = 0,
 					$this = $(this);
+					console.log(e.pageX+":"+$this.offset().left)
 				if(e.pageX-$this.offset().left < $this.width()/2){
 					self.add=0.5;
 				}else{

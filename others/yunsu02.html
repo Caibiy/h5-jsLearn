@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	模仿导航</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width:960px;
+			margin:0 auto;
+			overflow: hidden;
+			position: relative;
+		}
+		ul{
+			list-style: none;
+			width:960px;
+			width: 10000px;
+			position: relative;
+			font-size:0;
+		}
+		ul li{
+			display: inline-block;
+			width:300px;
+			text-align: center;
+			overflow: hidden;
+			font-size:14px;
+		}
+		img{
+			width:100%;
+			height:auto;
+		}
+	</style>
+	<script type="text/javascript">
+		
+	</script>
+</head>
+<body>
+	<div class="container">
+		<ul id="list">
+			<li><img src="../img/1.jpg">1</li>
+			<li><img src="../img/2.jpg">2</li>
+			<li><img src="../img/3.jpg">3</li>
+			<li><img src="../img/4.jpg">4</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var list = document.getElementById("list");
+		var liFirst = list.firstElementChild;
+		var liList = document.getElementsByTagName("li");
+		var liWidth = 0;
+		for(var i =0;i<liList.length;i++){
+			liWidth+=liList[i].offsetWidth;
+		}
+		console.log(liWidth+960);
+		var liCopy = liFirst.cloneNode(true);
+		list.append(liCopy);
+		liCopy = liList[1].cloneNode(true);
+		list.append(liCopy);
+		liCopy = liList[2].cloneNode(true);
+		list.append(liCopy);
+		liCopy = liList[3].cloneNode(true);
+		list.append(liCopy);
+		list.onmouseover = function(){
+			clearInterval(this.timer);
+		}
+		list.onmouseout = function(){
+			var offWidth = -(Math.abs(liWidth-Math.abs(list.offsetLeft))+Math.abs(list.offsetLeft));
+			
+			animate(list,offWidth);
+		}
+		animate(list,-liWidth);
+		//匀速移动
+		function animate(el,target){
+				clearInterval(el.timer);
+				var step = (target > el.offsetLeft)?1:-1;
+				el.timer = setInterval(function(){
+						var val = target - el.offsetLeft;
+						if(Math.abs(val)<Math.abs(step)){
+							el.style.left = target+"px";
+							if(liWidth===Math.abs(el.offsetLeft)){
+										el.style.left=0;
+							animate(el,-liWidth);
+							}
+						}else{
+							el.style.left = el.offsetLeft + step + "px";
+						}
+				},20)
+		}
+	</script>
+</body>
+</html>

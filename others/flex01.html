@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Justify-content设置子元素在主轴上的位置</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+			padding: 8px;
+			background:#fff;
+			border:1px solid #ccc;
+		}
+		ul li{
+			width:200px;
+			height:200px;
+			background:pink;
+			margin-right: 8px;
+		}
+		section{
+			width:1200px;
+			margin:0 auto;
+		}
+		section:nth-child(1) ul {
+			display: flex;
+			justify-content: flex-start;
+		}
+		section:nth-child(2) ul{
+			display: flex;
+			justify-content: flex-end;
+		}
+		section:nth-child(3) ul{
+			display: flex;
+			justify-content: center;
+		}
+		section:nth-child(4) ul{
+			display: flex;
+			justify-content: space-around;
+		}
+		section:nth-child(5) ul{
+			display: flex;
+			justify-content: space-between;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h3>justify-content:flext-start</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>justify:flext-end</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>justify-content:center</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>justify-content:space-around</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+	<section>
+		<h3>justify-content: space-between</h3>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</section>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>border三角形</title>
+	<style type="text/css">
+		.box{
+			width:0;
+			height:0;
+			border-left:50px solid transparent;
+			border-right:50px solid transparent;
+			border-bottom:100px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
+//我们有上边两个数组，itemsId是id数组，all是一个二维数组，其中的元素是，按照id的奇偶进行区分放置的，项目的对象。现在我们希望找到每个items中id对应的对象，这时候就要多重循环来查找：

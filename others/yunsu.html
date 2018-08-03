@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>匀速</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-size:16px;
+		}
+		.btn-box{
+			margin:0.875rem;
+		}
+		a{
+			text-decoration: none;
+			display: inline-block;
+			padding:0.75rem 0.9rem;
+			color:#fff;
+			border-radius:0.5rem;
+		}
+		.danger{
+			background-color:pink;
+		}
+		.info{
+			background-color:green;
+		}
+		.box{
+			position:absolute;
+			width:100px;
+			height:100px;
+			left:1rem;
+		}
+		.box.info{
+			top:200px;
+			left:2rem;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="btn-box">
+		<a href="#" class="btn danger">运动到left=200px</a>
+		<a href="#" class="btn info">运动到left=400px</a>
+	</div>
+	<div class="box danger"></div>
+	<div class="box info"></div>
+	<script type="text/javascript">
+		var dangerBox = document.getElementsByClassName("danger")[1];
+		var infoBox = document.getElementsByClassName("info")[1];
+		
+		document.getElementsByClassName("danger")[0].onclick = function(){
+				animate(dangerBox,200);
+				animate(infoBox,200);
+		};
+		
+		document.getElementsByClassName("info")[0].onclick = function(){
+				animate(infoBox,400);
+				animate(dangerBox,400);
+		};
+		function animate(ele,target){
+				clearInterval(ele.timer);
+				var step = (target > ele.offsetLeft)?10:-10;
+				ele.timer = setInterval(function(){
+						var eLeft = ele.offsetLeft;
+						ele.style.left = eLeft + step +"px";
+						if(Math.abs(target-eLeft)< Math.abs(step) ){
+							ele.style.left = target+"px";
+							clearInterval(ele.timer);
+						}
+				},300);
+		}
+	</script>
+</body>
+</html>

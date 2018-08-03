@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝轮播图</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		#lunbo{
+			width:960px;
+			margin:0 auto;
+			overflow: hidden;
+		}
+		#ul{
+			list-style: none;
+			width:30000px;
+			overflow: hidden;
+			font-size: 0;
+			max-height: 265px;
+			position: relative;
+		}
+		.screen{
+			width:500px;
+			overflow: hidden;
+			margin:0 auto;
+			position: relative;
+		}
+		#ul li{
+			font-size: 14px;
+			float:left;
+		}
+		#ul li img {
+			width: 500px;
+			height: auto;
+		}
+		.screen ol{
+			position: absolute;
+			bottom:10px;
+			list-style: none;
+		}
+		.screen ol li {
+			float:left;
+			margin-left:8px;
+			width:20px;
+			height:20px;
+			background:#fff;
+			text-align: center;
+			border:1px solid #ccc;
+			cursor: pointer;
+		}
+		.arr{
+			position: absolute;
+		}
+		.screen ol li.current{
+			background:pink;
+		}
+		.test{
+			width:100px;
+			height:100px;
+			padding:20px;
+			border:1px solid #ccc;
+			background: pink;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var lunbo = document.getElementById("lunbo");
+			var screen = document.getElementsByClassName("screen")[0];
+			var ul = document.getElementById("ul");
+			//水平居中
+			var ol = screen.children[1];
+			autoCenter();
+			var liFirst = ul.children[0].cloneNode(true);
+			ul.append(liFirst);
+			for(var i=1;i<=ul.children.length-1;i++){
+				ol.innerHTML+="<li>"+i+"</li>";
+			}
+
+			for(var i=0;i<ol.children.length;i++){
+				ol.children[i].index = i;
+				ol.children[i].onmouseover = function(){
+					clearInterval(timer)
+					for(var i=0;i<ol.children.length;i++){
+						ol.children[i].className = "";
+					}
+					ol.children[this.index].className = "current";
+					key = square = this.index;
+					animate(ul,-this.index*screen.offsetWidth);
+				}
+				ol.children[i].onmouseout = function(){
+					timer = setInterval(autoPlay,1000)
+				}
+			}
+			ol.children[0].className="current";
+			var timer = setInterval(autoPlay,1000);
+			var key = 0;
+			var square =0;
+			function autoPlay(){
+				key++;
+				if(key==ul.children.length){
+					key = 0;
+					ul.style.left = 0;
+					key++;
+					animate(ul,-key*screen.offsetWidth);
+				}
+				animate(ul,-key*screen.offsetWidth);
+				square++;
+				if(square>=ol.children.length){
+					square = 0;
+				}
+				for(var i=0;i<ol.children.length;i++){
+					ol.children[i].className="";
+				}
+				ol.children[square].className="current";
+			}
+			function autoCenter(){
+				var olWidth = ol.offsetWidth;
+				var screenWidth =  screen.offsetWidth;
+				ol.style.left = Math.abs(screenWidth/2 -olWidth/2)+"px";
+			}
+			function animate(el,target){
+				clearInterval(el.timer);
+				var step = (el.offsetLeft<target)?10:-10;
+				el.timer = setInterval(function(){
+					var val = Math.abs(target-el.offsetLeft);
+					if(Math.abs(step)>val){
+						el.style.left = target +"px";
+						clearInterval(el.timer);
+					}else{
+						el.style.left = (el.offsetLeft + step) + "px";
+					}
+				},10);
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="lunbo">
+		<h3 style="color:pink;text-align:center;margin-bottom:18px">轮播图</h3>
+		<div class="screen">
+			<ul id="ul">
+				<li><img src="../img/1.jpg" alt=""></li>
+				<li><img src="../img/2.jpg" alt=""></li>
+				<li><img src="../img/3.jpg" alt=""></li>
+				<li><img src="../img/4.jpg" alt=""></li>
+				<li><img src="../img/5.jpg" alt=""></li>
+			</ul>
+			<ol>
+			</ol>
+			<div class="arr">
+				<span><</span>
+				<span>></span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

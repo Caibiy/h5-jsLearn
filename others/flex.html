@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex布局</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			background:#fff;
+			padding:8px;
+			border:1px solid #ccc;
+			list-style: none;
+		}
+		ul li{
+			background-color:pink;
+			width:200px;
+			height:200px;
+			margin-right:8px;
+			text-align: center;
+		}
+		.container{
+			width:960px;
+			margin:0 auto;
+		}
+		section:nth-child(1) ul{
+			overflow: hidden;
+		}
+		section:nth-child(1) ul li{
+			float: left;
+		}
+		section:nth-child(2) ul{
+			display: flex;
+		}
+		section:nth-child(3) ul{
+			display: flex;
+			flex-direction: row-reverse;
+		}
+		section:nth-child(4) ul{
+			display: flex;
+			flex-direction: column;
+		}
+		section:nth-child(4) ul li:nth-child(n+2){
+			margin-top:8px;
+		} 
+		section:nth-child(5) ul{
+			display: flex;
+			flex-direction: column-reverse;
+		}
+		section:nth-child(5) ul li:nth-child(n-2){
+			margin-top:8px;
+		} 
+	</style>
+</head>
+<body>
+	<div class="container">
+		<section>
+			<h3>传统布局</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Flex布局-默认主轴方向</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Flex布局主轴相反方向</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Flex布局侧轴方向</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Flex布局侧轴相反方向</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</section>	
+	</div>
+	
+</body>
+</html>
