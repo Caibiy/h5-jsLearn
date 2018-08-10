@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>you are cool</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="vue">
+		<p>{{message}}</p>
+		<button v-on:click="reversemess">逆转消息</button>
+	</div>
+	<script type="text/javascript">
+		var vue = new Vue({
+			el:"#vue",
+			data:{
+				message:"Hello,YJD!"
+			},
+			methods:{
+				reversemess:function(){
+					this.message = this.message.split("").reverse().join("");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

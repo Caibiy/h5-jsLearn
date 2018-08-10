@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css过渡</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<style type="text/css">
+		.fade-enter-active{
+			transition:all .3s ease;
+		}
+		.fade-leave-active{
+			transition: all .8s ease; 
+		}
+		.fade-leave-to{
+			transform: translateX(10px);
+			opacity: 0;
+		}
+		.fade-enter{
+			transform: translateX(-10px);
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="example-1">
+		<button v-on:click="show=!show">Toggle</button>
+		<transition name="fade">
+			<p v-if="show">Hello,World!</p>
+		</transition>
+	</div>
+	<script type="text/javascript">
+		var ex = new Vue({
+			el:"#example-1",
+			data:{
+				show:true
+			}
+		})
+	</script>
+</body>
+</html>

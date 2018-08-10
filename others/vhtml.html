@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vhtml</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="vhtml">
+		<p>{{ rawHtml }}</p>
+		<span v-html="rawHtml"></span>
+	</div>
+	<script type="text/javascript">
+		var vhtml = new Vue({
+			el:"#vhtml",
+			data:{
+				rawHtml:"<span style='color:red'>wtf?</span>"
+			}
+		})
+	</script>
+</body>
+</html>

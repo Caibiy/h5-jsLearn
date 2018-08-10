@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<ul>
+		<li>啊啊啊</li>
+		<li>aaaaaaaaaa</li>
+		<li>bbbbbbb</li>
+	</ul>
+	<script type="text/javascript">
+		window.onload=function(){
+					var myMixin={
+			created:function(){
+				this.hello();
+			},methods:{
+				hello:function(){
+					console.log("Hello from mixin")
+				}
+			}
+		};
+		var Component = Vue.extend({myxins:[myMixin]});
+		var component = new Component();
+		}
+	</script>
+</body>
+</html>

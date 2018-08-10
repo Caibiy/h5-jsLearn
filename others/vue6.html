@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<style type="text/css">
+		ul{
+			list-style: none;
+		}
+		.list-item{
+			padding:8px;
+			font-size: 14px;
+		}
+		.list-enter-active,.list-leave-active{
+			transition: all 1s;
+		}
+		.list-enter,.list-leave-to{
+			transform: translateX(-30px);
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="trans">
+		<button v-on:click="remove">remove</button>
+		<button v-on:click="add">add</button>
+		<transition-group  name="list" tag="ul">
+			<li v-for="list in lists" v-bind:key="list" class="list-item"><a href="#">{{ list.txt }}</a></li>
+		</transition-group>
+	</div>
+	<script type="text/javascript">
+		var trans = new Vue({
+			el:"#trans",
+			data:{
+				lists:[
+					{txt:"首页"},{
+					txt:"关于"},{
+					txt:"资讯"
+					}]
+			},methods:{
+				remove:function(){
+					this.lists.pop();
+				},add:function(){
+					this.lists.push({txt:"哈哈哈"});
+				}
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>todolist</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<ul id="todo">
+		<todo-list v-for="todo of todos" v-bind:todo="todo">
+			<template slot-scope="slotProps">
+				<span v-if="slotProps.todo.isComplete">√</span>
+				{{slotProps.todo.text}}
+			</template>
+		</todo-list>
+	</ul>
+	<script type="text/javascript">
+		Vue.component('todo-list',{
+			props:['todo'],
+			template:'<li><slot v-bind:todo="todo" >{{todo.text}}</slot></li>'
+		});
+		var v = new Vue({
+			el:"#todo",
+			data:{
+				todos:[{
+					text:"西瓜",
+					isComplete:true
+				},{
+					text:"苹果",
+					isComplete:true
+				},{
+					text:"香蕉",
+					isComplete:false
+				}]
+			}
+		});
+	</script>
+</body>
+</html>

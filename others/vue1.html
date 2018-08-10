@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello world</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app-2">
+		<span v-bind:title="message"> 鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
+	</div>
+	<div id="app-3">
+		<p v-if="seen">现在可以看到我了</p>
+	</div>
+	<div id="app-4">
+		<ol>
+			<li v-for="todo in todos">
+				{{todo.text}}
+			</li>
+		</ol>
+	</div>
+	<div id="app-5">
+		<p>{{ message }}</p>
+		<button v-on:click="reverseMessage">点我</button>
+	</div>
+	<div id="app-6">
+		<p>{{ message }}</p>
+		<input  v-model="message" type="" name="">
+	</div>
+	<div id="app-7">
+		<ol>
+<todo-item v-for="item in items"
+	v-bind:todo="item"
+	v-bind:id="item.key"></todo-item> 
+		</ol>
+	</div>
+	<div id="app-8">
+		<p>{{ foo }}</p>
+		<button v-on:click=" foo ='小垃圾' ">点我</button>
+	</div>
+	<script type="text/javascript">
+		var app2 = new Vue({
+			el:"#app-2",
+			data:{
+				message:"页面加载于"+new Date().toLocaleString()
+			}
+		})
+		var app3 = new Vue({
+							el:"#app-3",
+							data:{
+								seen:true
+							}});
+		var app4 = new Vue({
+						el:"#app-4",
+						data:{
+							todos:[
+								{text:"学习Javascript"},
+								{text:"学习vue"},
+								{text:"学习牛项目"}
+							]
+						}
+		});
+		var app5 = new Vue({
+			el:"#app-5",
+			data:{
+				message:"Hello,vues.js!"
+			},
+			methods:{
+				reverseMessage:function(){
+					this.message = this.message.split("").reverse().join("");
+				}
+			}
+		});
+		var app6 = new Vue({
+			el:"#app-6",
+			data:{
+				message:"哈哈哈哈"
+			}
+		})
+		var item = Vue.component('todo-item',{
+			props:["todo"],
+			template:"<li>{{ todo.text }}</li>"
+		})
+		var app7 = new Vue({
+			el:"#app-7",
+			data:{
+				items:[{key:1,text:"想吃啥吃啥"},{key:2,text:"想干啥干啥"},{key:3,text:"为所欲为"}]
+			}
+		})
+		var obj = {foo:"哈哈哈"}
+		Object.freeze(obj);
+		var app8 = new Vue({
+			el:"#app-8",
+			data:obj
+		})
+	</script>
+</body>
+</html>

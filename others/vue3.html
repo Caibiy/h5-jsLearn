@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue03</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="vue">
+		<todo-item v-for="item of items" v-key="item.id" v-bind:item="item"></todo-item>
+	</div>
+	<script type="text/javascript">
+		Vue.component('todo-item',{
+			props:['item'],
+			template:'<li>{{item.txt}}</li>'
+		});
+		var mvue = new Vue({el:"#vue",data:{
+			items:[{id:1,txt:"西瓜"},{id:2,txt:"芒果"},{id:3,txt:"草莓"}]
+		}})
+	</script>
+</body>
+</html>

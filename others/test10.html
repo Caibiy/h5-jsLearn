@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>官网效果</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width:640px;
+			margin:0 auto;
+			padding:60px 0;
+			text-align: center;
+		}
+		.container ul {
+			list-style: none;
+		}
+		.container ul li {
+			display: inline-block;
+			width:70px;
+			margin-right: 40px;
+			text-align: center;
+
+		}
+		.container ul li img{
+			width:70px;
+			height:auto;
+		}
+
+		button{
+			padding:8px;
+			border-radius: 8px;
+			border: none;
+		}
+		@keyframes test{
+			from{
+				transform: translateY(80px);
+				opacity: 0
+			}
+			to{
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+
+		@keyframes test2{
+			from{
+				transform: translateY(0);
+				opacity: 1;
+			}
+			to{
+				transform: translateY(80px);
+				opacity: 0
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="ul">
+			<li><img src="./icon3.png" alt="">包就业</li>
+			<li><img src="./icon4.png" alt="">小班教学</li>
+			<li><img src="./icon5.png" alt="">一次收费</li>	
+		</ul>
+		<button onclick="clickbtn()">隐藏</button>
+		<button onclick="clickbtn2()">显示</button>
+	</div>
+	<script type="text/javascript">
+		function clickbtn(){
+			Array.prototype.map.call(document.querySelectorAll(".ul>li"),function(va,index,arr){
+				va.style.transform = "translateY(0)"
+				va.style.opacity = "1";
+				va.style.animation = "test2 0.8s";
+				va.style.animationDelay = 0.3*index+"s";
+				va.style.animationFillMode = "forwards";
+			})
+		}
+		function clickbtn2(){
+				Array.prototype.map.call(document.querySelectorAll(".ul>li"),function(va,index,arr){
+				va.style.animation = "test 0.8s";
+				va.style.transform = "translateY(80px)"
+				va.style.opacity = "0";
+				va.style.animationDelay = 0.3*index+"s";
+				va.style.animationFillMode = "forwards";
+			})
+		}
+	</script>
+</body>
+</html>
