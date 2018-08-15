@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,18 +7,161 @@
 <meta name="keywords" content="零基础入门自学室内设计3DMAX教程" />
 
 <meta name="description" content="零基础入门自学室内设计3DMAX教程" />
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			background:#E79503 url("./img/bg.jpg") repeat-y center;
+			font-size: 16px;
+		}
+		main{
+			width:960px;
+			margin:0 auto;
+		}
+		main img{
+			display: inline-block;
+			width:100%;
+			height: auto;
+		}
+		nav {
+			width:960px;
+			margin:0 auto;
+		}
+		nav ul{
+			list-style: none;
+			display: flex;
+			flex-direction:row;
+		}
+		nav ul li {
+			flex:1;
+			text-align: center;
+			overflow: hidden;
+			padding:32px 0;
+			background:red;
+			color:#fff;
+			font-size: 24px;
+		}
+		nav ul li:nth-child(n+2){
+			border-left:1px solid #fff;
+		}
+		nav ul li a{
+			display: inline-block;
+			width:100%;
+			height:100%;
+			text-decoration: none;
+			color:inherit;
+			transition: all 1s ease;
+		}
+		nav ul li:hover{
+			box-shadow:0 0 20px rgba(0,0,0,0.5); -webkit-box-shadow:0 0 20px rgba(0,0,0,0.5); -moz-box-shadow:0 0 20px rgba(0,0,0,0.5);transform:scale(1.05);-webkit-transform: scale(1.05); -moz-transform:scale(1.05); -ms-transform:scale(1.05);
+		}
+		.question{
+			margin-top:6px;
+			margin-bottom:6px;
+		}
+		.questions ul{
+			list-style: none;
+		}
+		.questions ul li {
+			border-bottom:1px dashed #ccc;
+			font-size: 32px;
+			font-weight: bold;
+			animation: fontChange 1.5s infinite;
+		}
+		.questions ul li:last-child {
+			color:red;
+			font-weight: bold;
+		}
+		.kedes{
+			margin-top:12px;
+			font-size: 42px;
+			text-align: justify;
+			margin-bottom:12px;
+		}
+		.strong{
+			font-size: 1.2em;
+			color:red
+		}
+		.footer{
+			padding:20px 0;
+			background:gray;
+			color:ghostwhite;
+			text-align: center;
+		}
+		.lianxi{
+			font-size:32px;
+			width:1em;
+			position: fixed;
+			right:0;
+			top:40%;
+			padding:12px 5px 12px 12px;
+			background:red;
+			border-top-left-radius: 12px;
+			border-bottom-left-radius: 12px;
+		}
+		.lianxi a{
+			text-decoration: none;
+			color:#fff;
+		}
+		footer{
+			width:960px;
+			margin:0 auto;
+		}
+		.pay-container{
+			font-weight: bold;
+			font-size: 36px;
+			margin-top:30px;
+			text-align: center;
+		}
+		.pay-container .shuoming{
+			font-size: 24px;
+			color:black;
+			text-align: justify;
+		}
+		.pay-container>h3{
+			padding-bottom:20px;
+		}
+		.img-container{
+			display: flex;
+		}
+		.img-container>.container{
+			flex: 1;
+			overflow: hidden;
+		}
+		.img-container>.container>img{
+			width:100%;
+			height:auto;
+		}
+		@keyframes fontChange{
+			0%{
+				transform: scaleY(1)
+			}
+			50%{
+				transform: scaleY(1.1)
+			}
 
+			100%{
+				transform: scaleY(1.4);
+			}
+		}
+	</style>
+	<script data-src="./scripts/jquery.min.js"></script>
 </head>
 <body>
-	<nav>
+	<nav id="shoye">
 		<ul>
 			<li><a href="#shouye">首页</a></li>
-			<li><a href="#gssl">课程优势</a></li>
+			<li><a href="#kcys">课程优势</a></li>
 			<li><a href="#kcjs">课程介绍</a></li>
 			<li><a href="#xyfx">学员分享</a></li>
 		</ul>
 	</nav>
 	<main>
+		<section id="shouye" name="shouye" class="bzl">
+			<img data-src="./img/bzl.jpg" alt="">
+		</section>
 		<section class="questions">
 			<ul>
 				<li>你还在为了学习室内设计而找不到系统的教程而烦恼吗？</li>
@@ -26,9 +169,164 @@
 				<li>你还在为了无法提高自己室内设计技术水平而烦恼吗？</li>
 				<li>你还在为了学习室内设计技术而要奔赴外地犹豫吗？</li>
 				<li>你还在为了没有专业室内技术学习教程而烦恼吗？</li>
-				<li>如果您有以上疑问，请认真阅读下面的文章↓↓↓</li>
+				<li>如果您有以上疑问，请往下阅读↓↓↓</li>
 			</ul>
 		</section>
+		<section  name="kcjs" id="kcjs"  class="kedes">
+			<p>邀请室内设计行业内<span class="strong">十年以上的一线工程师</span>,给大家推出<span class="strong">最良心最系统</span>的全套课程,学完之后,<span class="strong">绝大多数学员</span>都可以自己<span class="strong">独立</span>进行室内设计,甚至可以<span class="strong">改行</span>！！！</p>
+		</section>
+		<section  class="kepic">
+			<img data-src="./img/kcjs1.jpg" alt="">
+			<img data-src="./img/kcjs3.jpg" alt="">
+			<img data-src="./img/kcjs2.jpg" alt="">
+		</section>
+		<section id="kcys" name="kcys"class="kepic2">
+			<img data-src="./img/kcjj.jpg" alt="">
+			<img data-src="./img/kcjs.jpg" alt="">
+			<img data-src="./img/xyzp3.jpg" alt="">
+			<img data-src="./img/szjx.jpg" alt="">
+		</section>
+		<section id="xyfx" name="xyfx" class="xyzp">
+			<img data-src="./img/xyzp1.jpg" alt="">
+			<img data-src="./img/xyzp2.jpg" alt="">
+		</section>
+		<section class="bjbh">
+			<img data-src="./img/bjbh.jpg" alt="">
+		</section>
+		<aside class="lianxi"><a href="#fukuan">联系购买</a></aside>
 	</main>
+	<footer id="fukuan" name="fukuan">
+			<section class="goumai">
+					<div class="pay-container">
+						<h3>付款方式</h3>
+						<p class="shuoming">付款说明:本套课程全套仅售<span class="strong">98</span>元,付款之后添加客服QQ:<span class="strong">647622365</span>,发送转账截图,客服会给你发送
+							<span class="strong">学习资料</span>,并把您拉入学习QQ群和微信群<span class="strong">和老师零距离互动</span>。</p>
+						<div class="img-container">
+							<div class="container"><img data-src="./img/weixin.JPG" alt=""></div>
+							<div class="container"><img data-src="./img/zhifubao.JPG" alt=""></div>
+						</div>
+					</div>
+			</section>
+			
+		<section class="footer">备案号:皖ICP备15009043号-1</section>
+	</footer>
+	<script type="text/javascript">
+	var nav = $("#shoye")[0];
+	console.log(nav.offsetHeight);
+	$(function(){
+		var img = $("img");
+        for(var i=0;i<img.length;i++){
+            if($(img).eq(i).attr("src")===""){
+                $(img).eq(i).attr("src",$(img).eq(i).attr("data-src"));
+            }
+        }
+	})
+	window.onscroll = function(){
+		if(scroll().top>nav.offsetHeight){
+			$(nav).css("position","fixed");
+			$(nav).css("z-index","2");
+			$(nav).css("opacity","0.9");
+			$(nav).css("left","50%");
+			$(nav).css("transform","translateX(-50%)");
+		}else{
+				$(nav).css("position","");
+			$(nav).css("z-index","");
+			$(nav).css("opacity","");
+			$(nav).css("left","0");
+			$(nav).css("transform","translateX(0)");
+		}
+	}
+	var nameMy = ['王*','李**','张*','刘*','陈**','杨*','黄**','吴*','赵*','周**','徐*','孙*','马**','朱**','胡*','林*','郭**','何**','高*','罗*','郑**','梁**','谢**','宋*','唐*','许**','邓**','冯*','韩*','曹**','曾**'];
+        var city = ['杭州','宁波','温州','绍兴','湖州','嘉兴','金华','衢州','舟山','台州','丽水','上海','常州','徐州','南通','宿迁','无锡','镇江'];
+        var gender = ["先生","女士"];
+        var bmdt = function(){
+            var BMDT = function(options){
+                if(!options.list){
+                    throw "list is not  empty!";
+                }
+                this.options = options;
+                this.index = 0;
+                this.timer = null;
+
+            }
+            var defaultCss = {
+                bmdt:"position: fixed;height: 150px;overflow: hidden;bottom:0;left:0;z-index: 10;",
+                ul:"list-style: none;overflow:hidden;",
+                li:"margin-top:10px;position: relative;font-size: 32px;color:#fff;height:40px;line-height: 40px;transition: all 0.3s linear;"
+            }
+            BMDT.prototype.render = function(){
+                if(this.options.list&&this.options.list.length>0){
+                    var aside = document.createElement("aside");
+                    var ul = document.createElement("ul");
+                    aside.classList += "bmdt";
+                    aside.style.cssText = defaultCss.bmdt;
+                    ul.style.cssText = defaultCss.ul;
+                    this.ulHeight = ul.offsetHeight;
+                    for(var i=0;i<this.options.list.length;i++){
+                        var li = document.createElement("li");
+                        li.style.cssText = defaultCss.li;
+                        li.innerHTML = "<p style='display:inline-block;padding:0 10px;background:rgba(0,0,0,0.55);border-radius: 40px;-webkit-tap-highlight-color: rgba(0,0,0,0);'><span><img style='width:20px;height:20px' data-src="+this.options.list[i].iconSrc+"></span>"+this.options.list[i].text+"</p>";
+                        ul.appendChild(li);
+                    }
+                    aside.appendChild(ul);
+                    document.querySelector("body").appendChild(aside);
+                }
+            }
+            BMDT.prototype.event = function(){
+                var _ = this;
+                _.timer = setInterval(function(){
+                    _.index--;
+                    if(Math.abs(_.index)>_.options.list.length){
+                        _.index = 0;
+                        Array.prototype.map.call(document.querySelectorAll(".bmdt>ul>li"),function(el,index){
+                            el.style.transform = "translateY(0)";
+                        });
+                    }else{
+                        Array.prototype.map.call(document.querySelectorAll(".bmdt>ul>li"),function(el,index){
+                            el.style.transform = "translateY("+_.index*10+"px)";
+                        });
+                    }
+                },1100)
+            }
+            BMDT.prototype.init = function(){
+                this.render();
+                this.event();
+            }
+            var init = function(options){
+                var b = new BMDT(options);
+                b.init();
+            }
+            return {init:init}
+		}().init({list:initList(20,"./img/tongzhi.png")});
+		function initList(len,iconsrc){
+            var list = [];
+            if(len>0){
+                for(var i=0;i<len;i++){
+					var t = {};
+					var name2 = randomA(nameMy);
+                   t.text="恭喜"+randomA(city)+","+name2+randomA(gender)+",<span class='strong'>购买了课程</span>,加入学习群。";
+                    t.iconSrc=iconsrc;
+                    list.push(t);
+                }
+                return list.length>0?list:undefined;
+            }
+		}
+		function randomA(array){
+            if(array&&array.length>0){
+				var val =  array[Math.floor(Math.random()*(array.length))];
+				if(array.indexOf(val)!=-1){
+					return val;
+				}else{
+					randomA(array);
+				}
+            }
+        }
+	function scroll() {
+        return { 
+            "top": window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+            "left": window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
+        }
+    }
+	</script>
 </body>
 </html>
