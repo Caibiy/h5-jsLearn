@@ -147,7 +147,7 @@
 			}
 		}
 	</style>
-	<script data-src="./scripts/jquery.min.js"></script>
+	<script src="./scripts/jquery.min.js"></script>
 </head>
 <body>
 	<nav id="shoye">
@@ -160,7 +160,7 @@
 	</nav>
 	<main>
 		<section id="shouye" name="shouye" class="bzl">
-			<img data-src="./img/bzl.jpg" alt="">
+			<img src="./img/bzl.jpg" alt="">
 		</section>
 		<section class="questions">
 			<ul>
@@ -176,22 +176,22 @@
 			<p>邀请室内设计行业内<span class="strong">十年以上的一线工程师</span>,给大家推出<span class="strong">最良心最系统</span>的全套课程,学完之后,<span class="strong">绝大多数学员</span>都可以自己<span class="strong">独立</span>进行室内设计,甚至可以<span class="strong">改行</span>！！！</p>
 		</section>
 		<section  class="kepic">
-			<img data-src="./img/kcjs1.jpg" alt="">
-			<img data-src="./img/kcjs3.jpg" alt="">
-			<img data-src="./img/kcjs2.jpg" alt="">
+			<img src="./img/kcjs1.jpg" alt="">
+			<img src="./img/kcjs3.jpg" alt="">
+			<img src="./img/kcjs2.jpg" alt="">
 		</section>
 		<section id="kcys" name="kcys"class="kepic2">
-			<img data-src="./img/kcjj.jpg" alt="">
-			<img data-src="./img/kcjs.jpg" alt="">
-			<img data-src="./img/xyzp3.jpg" alt="">
-			<img data-src="./img/szjx.jpg" alt="">
+			<img src="./img/kcjj.jpg" alt="">
+			<img src="./img/kcjs.jpg" alt="">
+			<img src="./img/xyzp3.jpg" alt="">
+			<img src="./img/szjx.jpg" alt="">
 		</section>
 		<section id="xyfx" name="xyfx" class="xyzp">
-			<img data-src="./img/xyzp1.jpg" alt="">
-			<img data-src="./img/xyzp2.jpg" alt="">
+			<img src="./img/xyzp1.jpg" alt="">
+			<img src="./img/xyzp2.jpg" alt="">
 		</section>
 		<section class="bjbh">
-			<img data-src="./img/bjbh.jpg" alt="">
+			<img src="./img/bjbh.jpg" alt="">
 		</section>
 		<aside class="lianxi"><a href="#fukuan">联系购买</a></aside>
 	</main>
@@ -202,8 +202,8 @@
 						<p class="shuoming">付款说明:本套课程全套仅售<span class="strong">98</span>元,付款之后添加客服QQ:<span class="strong">647622365</span>,发送转账截图,客服会给你发送
 							<span class="strong">学习资料</span>,并把您拉入学习QQ群和微信群<span class="strong">和老师零距离互动</span>。</p>
 						<div class="img-container">
-							<div class="container"><img data-src="./img/weixin.JPG" alt=""></div>
-							<div class="container"><img data-src="./img/zhifubao.JPG" alt=""></div>
+							<div class="container"><img src="./img/weixin.JPG" alt=""></div>
+							<div class="container"><img src="./img/zhifubao.JPG" alt=""></div>
 						</div>
 					</div>
 			</section>
@@ -213,14 +213,6 @@
 	<script type="text/javascript">
 	var nav = $("#shoye")[0];
 	console.log(nav.offsetHeight);
-	$(function(){
-		var img = $("img");
-        for(var i=0;i<img.length;i++){
-            if($(img).eq(i).attr("src")===""){
-                $(img).eq(i).attr("src",$(img).eq(i).attr("data-src"));
-            }
-        }
-	})
 	window.onscroll = function(){
 		if(scroll().top>nav.offsetHeight){
 			$(nav).css("position","fixed");
@@ -265,7 +257,7 @@
                     for(var i=0;i<this.options.list.length;i++){
                         var li = document.createElement("li");
                         li.style.cssText = defaultCss.li;
-                        li.innerHTML = "<p style='display:inline-block;padding:0 10px;background:rgba(0,0,0,0.55);border-radius: 40px;-webkit-tap-highlight-color: rgba(0,0,0,0);'><span><img style='width:20px;height:20px' data-src="+this.options.list[i].iconSrc+"></span>"+this.options.list[i].text+"</p>";
+                        li.innerHTML = "<p style='display:inline-block;padding:0 10px;background:rgba(0,0,0,0.55);border-radius: 40px;-webkit-tap-highlight-color: rgba(0,0,0,0);'><span><img style='width:20px;height:20px' src="+this.options.list[i].iconSrc+"></span>"+this.options.list[i].text+"</p>";
                         ul.appendChild(li);
                     }
                     aside.appendChild(ul);
