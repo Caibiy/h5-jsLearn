@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<style>
+		.red{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="ele">
+		<span v-once>Message:{{msg1}}</span><br>
+		<span>Message:{{msg2}}</span><br>
+		<span v-html="msg3"></span><br>
+		<button @click="fuck">点我</button><br>
+		<span>Reverse msg1:{{reverseMsg1}}</span><br>
+		<span>{{now}}</span><br>
+		<span :class="[{red:isActive}]">{{full}}</span>
+	</div>
+	<div id="vm2">
+		<template v-if="loginType=='email'">
+			<label for="email">Email:</label>
+			<input id="email" key="email" type="email" placeholder="Please input your email">
+		</template>
+		<template v-else>
+			<label for="username">Username:</label>
+			<input id="username" key="username" type="text" placeholder="Please input your name">
+		</template>
+		<br>
+		<button @click="toggleType">切换类型</button>
+		<ul style="list-style: none;">
+			<li v-for="item in items">
+				{{item}}
+			</li>
+		</ul>
+		<button @click="changeItem">改变值</button>
+		<ul style="list-style: none;">
+			<li v-for="item in evenNumbers">
+				{{item}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var data = {
+			msg1:"Hello",
+			msg2:"YJD",
+			msg3:"<span style='color:red'>Hi</span>",
+			full:"Hello YJD",
+			isActive:true
+		};
+		var vm2 = new Vue({
+			el:"#vm2",
+			data:{
+				loginType:"username",
+				items:[1,2,3,4],
+				numbers:[1,2,3,4]
+			},methods:{
+				toggleType:function(){
+					this.loginType=(this.loginType=="username")?"email":"username";
+				},changeItem:function(){
+					this.items.splice(0,0,1,2,3);
+				}
+			},computed:{
+				evenNumbers:function(){
+					return this.numbers.filter(function(va){
+						return va%2==0;
+					})
+				}
+			}
+		})
+		var vm = new Vue({
+			el:"#ele",
+			data:data,
+			methods:{
+				fuck:function(){
+					alert("fuck yourself!");
+				}
+			},
+			watch:{
+				msg1:function(va){
+					this.full=va+" "+this.msg2;
+				}
+			},
+			computed:{
+				now:function(){
+					return Date.now();
+				},
+				reverseMsg1:function(){
+					return this.$data.msg1.split('').reverse().join('');
+				}
+			}
+		}) 
+	</script>
+</body>
+</html>

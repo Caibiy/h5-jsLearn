@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Directive</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<div> <span v-jsyang="color">{{num}}</span></div>
+		<button @click="add">add</button>
+	</div>
+	<script type="text/javascript">
+		Vue.directive('jsyang',{
+			bind:function(el,bingding,vnode){
+			el.style = 'color:'+bingding.value;
+		  },inserted:function(){
+		  	console.log("2 - inserted");
+		  },update:function(){
+		  	console.log("3 - updated");
+		  }
+		})
+		var app = new Vue({
+			el:"#app",
+			data:{
+				num:10,
+				color:"pink"
+			},
+			methods:{
+				add:function(){
+					this.num++;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

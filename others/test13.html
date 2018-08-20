@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="todolist">
+		<form @submit.prevent="newTodo">
+			<label for="newto-do">你想做什么?</label>
+			<input id="newto-do" v-model="newText" placeholder="例:玩游戏" >
+			<button>提交</button>
+		</form>
+		<ul style="list-style:none;">
+			<li is="todo-item" v-for="(item,index) in items" :key="item.id" :item="item" @remove="items.splice(index,1)"></li>
+		</ul>
+	</div>
+	<div id="buttonCounter">
+		<p is="button-counter"></p>
+	</div>
+	<script type="text/javascript">
+		Vue.component("todo-item",{
+			template:"<li>{{item.text}}<button @click=\"$emit('remove')\">Remove</button></li>",
+			props:["item"]
+		});
+		var todolist = new Vue({
+			el:"#todolist",
+			data:{
+				items:[{id:1,text:"学习"},{id:2,text:"打游戏"}],
+				newText:"",
+				nextId:3
+			},methods:{
+				newTodo:function(){
+					this.items.push({id:this.nextId++,text:this.newText});
+					this.newText="";
+				}
+			}
+		})
+		Vue.component("button-counter",{
+			data:function(){
+				return {count:0}
+			},
+			template:"<button @click='count++'>你点了{{count}}次按钮</button>"
+		});
+		var bcounter = new Vue({
+			el:"#buttonCounter"
+		})
+	</script>
+</body>
+</html>

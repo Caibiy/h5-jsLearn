@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全局拓展</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<header></header>
+	<script>
+		var header_m = Vue.extend({
+			template:'<p>HelloWorld!</p>'
+		})
+		new header_m().$mount('header');
+	</script>
+</body>
+</html>
