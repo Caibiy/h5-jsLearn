@@ -13,7 +13,7 @@ nightmare
   .wait('#TANGRAM__PSP_10__footerULoginBtn')
   .click('#TANGRAM__PSP_10__footerULoginBtn')
   .type('#TANGRAM__PSP_10__userName','17326191153')
-  .type('#TANGRAM__PSP_10__password','jiaDONG1234&')
+  .type('#TANGRAM__PSP_10__password','111')
   .click('#TANGRAM__PSP_10__submit')
   .wait('#s_menu_mine > div.mine-text')
   .evaluate(() => document.querySelector('#s_menu_mine > div.mine-text').innerHTML)
