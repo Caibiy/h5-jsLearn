@@ -13,7 +13,7 @@ nightmare
   .wait('#TANGRAM__PSP_10__footerULoginBtn')
   .click('#TANGRAM__PSP_10__footerULoginBtn')
   .type('#TANGRAM__PSP_10__userName','17326191153')
-  .type('#TANGRAM__PSP_10__password','jiaDONG1234&')
+  .type('#TANGRAM__PSP_10__password','111')
   .click('#TANGRAM__PSP_10__submit')
   .wait(25000)
   .cookies.get()
@@ -37,5 +37,7 @@ console.log("name: "+storedCookies[i].name+",value: "+storedCookies[i].value);
   .end()
   .catch(error => {
     console.error('Search failed:', error)
+<<<<<<< HEAD
   });
 */
+
