@@ -1,8 +1,8 @@
 /*
 * @Author: Caibiy
 * @Date:   2018-08-20 17:29:49
-* @Last Modified by:   YJD
-* @Last Modified time: 2018-08-20 18:10:15
+* @Last Modified by:   Caibiy
+* @Last Modified time: 2018-08-28 13:27:46
 */
 /*
 nightmare
@@ -50,7 +50,7 @@ nightmare2
 	  nightmare2.goto(href)
 	  //core_title_txt
 	  .wait("h1.core_title_txt")
-	  .type("#ueditor_replace","希望可以帮助到迷茫的人http://www.9ilu.com/74.html")
+	  .type("#ueditor_replace","")
 	  .click(".ui_btn_m")
 	  .wait(15000)
 	  .evaluate(()=>{

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.fEn{
+			font-family:"Lato", sans-serif;
+			font-size: 1.5rem;
+		}
+		.fArticle{
+			font-family:"Open Sans",sans-serif;
+			color:white;
+		}
+		.fTitle{
+			font-family: 'Sriracha', cursive;
+		}
+
+		body, html{
+ 			height:100%;
+ 			font-size:16px;
+			line-height:1.8em;
+			color:#13227a;
+		}
+		section.header,section.produc{
+		 	position:relative;
+  			opacity:0.7;
+			background-position:center;
+			background-size:cover;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+		}
+		section.header{
+			min-height: 100%;
+			background-image: url("./5.jpg");
+		}
+		section.produc{
+			min-height: 100%;
+			background-color: #fafbfb;
+			overflow: hidden;
+			background-image: url("./banner-one.png");
+			background-position: left top;
+			background-size: 500px auto;
+		}
+		div.business{
+			position: absolute;
+			top:50%;
+			left:50%;
+			transform:translateX(-50%) translateY(-70%);
+			text-align: center;
+			overflow: hidden;
+		}
+		div.business h3{
+			font-size: 2.5rem;
+			margin-top:1rem;
+			margin-bottom: 2rem;
+		}
+		div.business p{
+			font-size: 18px
+		}
+		section.header .btns{
+			position: absolute;
+			bottom:20%;
+			left:50%;
+			transform: translateX(-50%);
+			padding:0 20px;
+		}
+		section.header .btns a{
+			color:white;
+			padding:8px 42px;
+			text-decoration: none;
+			border-radius: 24px;
+			background-image:-webkit-linear-gradient(92deg,#f35626,#feab3a);
+			animation:hue 60s linear;
+			animation-iteration-count: infinite;
+		}
+		section.header .btns a:last-child{
+			animation:huere 60s linear;
+			margin-left: 36px;
+			animation-iteration-count: infinite;
+		}
+		.nav{
+			list-style: none;
+			position: fixed;
+			top:0;
+			padding:8px 0;
+			overflow: hidden;
+			width:100%;
+			box-sizing: content-box;
+			margin-right: 15%;
+			background-color: white;
+			display: none;
+			opacity: 0.99;
+			z-index: 1;
+		}
+		.nav li:not(.logo){
+
+			float: right;
+			margin:0 30px;
+		}
+		.nav li.logo{
+			font-size: 1.5rem;
+			margin:0 30px;
+			float: left;
+		}
+		.nav li a{
+			text-decoration: none;
+		}
+		.proIntro{
+			font-weight: bold;
+			background:linear-gradient(to right,Magenta,pink);
+			opacity: 0.6;
+			overflow: hidden;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding:20px 35px ;
+			box-sizing: content-box;
+
+		}
+		.proIntro h3{
+			flex:3;
+			text-align: center;
+			font-size: 24px;
+			color:white;
+		}
+		.fArticle{
+			flex:7;
+			text-align:justify;
+		}
+		section.produc>h3{
+			margin-top:7rem;
+			text-align: center;
+			font-size: 1.5rem;
+		}
+		section.produc>p {
+			margin-top:0.5rem;
+			text-align: center;
+		}
+		section.produc .producs{
+			display: flex;
+			margin:3rem 10%;
+			text-align: center;
+		}
+		section.produc .img-container>img{
+			display: inline-block;
+			width:50px;
+			height:50px;
+		}
+		section.produc .producs .producs-item{
+			flex:1;
+			margin:0 20px;
+			box-sizing: content-box;
+			transition: all 0.2s linear;
+			padding:10px;
+			box-shadow:0 0 12px rgba(0,0,0,0.06);
+		}
+		section.produc .producs .producs-item:hover{
+			cursor: pointer;
+			transform: scale(1.05);
+		}
+		@keyframes pinkBac{
+			from{
+				transform: translateY(-100%);
+				background-color:white;
+			}
+			to{
+				transform: translateY(0);
+				background-color:#d4237a;
+			}
+		}
+		@keyframes greenBac{
+			from{
+				transform: translateY(-100%);
+				background-color: white;
+			}
+			to{
+				transform: translateY(0);
+				background-color: #1afa29;
+			}
+		}
+		@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+		@-webkit-keyframes huere {
+  from {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(0deg);
+  }
+}
+	</style>
+</head>
+<body>
+	<nav class="nav">
+		<li class="logo"><a class="fEn" href="#">GxVps.net</a></li>
+		<li><a href="#">Log in</a></li>
+		<li><a href="#">Sign up</a></li>
+	</nav>
+	<section class="header">
+		<div class="business">
+			<h3>GxVps.net 云服务提供商</h3>
+			<p>基于第三代Hyper-V®架构，通过大规模分布式集群实现自动冗余，提供 BGP高度冗余网络 + 中港/海外CN2直通内地。您可通过友好的管理控制台，对资源进行轻松管理与扩展。</p>
+		</div>
+		<div class="btns">
+			<a href="#">立即购买</a>
+			<a href="#">了解我们</a>
+		</div>
+	</section>
+	<div class="proIntro">
+		<h3>为什么选择我们?</h3>
+		<p class="fArticle">机房均配置全光纤网络，BGP智能多线，直连大陆ChinaNET骨干端口国内南北互通，连接速度在5-54ms之间，网站可秒开。现所有主机/云服务器的SSD固态硬盘部署，硬盘读写能力提升5倍，彻底解决高并发问题，可满足高IO需求的数据库等在线业务！</p>
+	</div>
+	<section class="produc">
+		<h3>稳定安全的云计算服务</h3>
+		<p>洛杉矶/香港优质网络</p>
+		<div class="producs">
+			<div class="producs-item">
+				<div class="img-container"><img src="./idc4.png" alt=""></div>
+				<h5>云服务器</h5>
+				<p>我们拥有无与伦比的第三代Hyper-V®完全虚拟化技术，并提供纯净、多样化的系统镜像。用户可自定义配置、系统。</p>
+			</div>
+			<div class="producs-item">
+				<div class="img-container"><img src="./idc4.png" alt=""></div>
+				<h5>云虚拟主机</h5>
+				<p>采用主流LAMMP配置，让学生小白轻松建站成为站长不再是遥不可及。</p>
+			</div>
+			<div class="producs-item">
+				<div class="img-container"><img src="./idc4.png" alt=""></div>
+				<h5>高防服务器</h5>
+				<p>我们提供高达1TB DDoS/无视CC，有效预防各类攻击，让你购买之后再无后顾之忧。</p>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		window.onload = function(){
+			var nav = document.querySelector("nav");
+			var navHeight = nav.offsetHeight;
+			window.onscroll = function(){
+				if(scroll().top>navHeight){
+					nav.style.cssText = "display:block"
+				}else{
+					nav.style.display = "";
+				}
+			}
+			
+
+		}
+		function scroll() {
+            return { 
+                "top": window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+                "left": window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
+            }
+        }
+	</script>
+</body>
+</html>
