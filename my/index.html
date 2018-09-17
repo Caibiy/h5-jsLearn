@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pi's blog | pipipi.net</title>
+	<script type="text/javascript" src="./jquery.min.js"></script>
+	<script type="text/javascript" src="./bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./bootstrap.min.css">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		header{
+			width:100%;
+			height:100%;
+			background:url('./index.jpg') center no-repeat;
+			background-size: 100% 100%;
+		}
+		nav{
+			text-align: center;
+			position: relative;
+		}
+		nav ul{
+			list-style: none;
+			overflow: hidden;
+			position: absolute;
+			right:0;
+			top:50%;
+			transform: translateY(-50%);
+		}
+		nav ul li{
+			float: right;
+		}
+		nav ul li a{
+			display: block;
+			padding:8px 16px;
+			transition: all 1s;
+		}
+		.intro .container-bg{
+			max-width:100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<header class="col-sm-12">
+		<nav>
+			<h3><a href="#">Pi's website</a></h3>
+			<ul>
+				<li><a class="btn btn-danger" href="#">博客</a></li>
+				<li><a class="btn btn-danger" href="#">生活</a></li>
+				<li><a  class="btn btn-danger" href="#">首页</a></li>
+			</ul>
+		</nav>
+	</header>
+</body>
+</html>
