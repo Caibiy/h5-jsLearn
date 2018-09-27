@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const { exec } = require('child_process')
 const config = require('./config')
 const mongoose = require('mongoose')
-
+const routes = require("./routes/index")
 app.engine('pug', require('pug').__express)
 
 app.set("view engine", "pug");
@@ -18,28 +18,26 @@ app.use(express.static(__dirname + '/public'));
 
 app.engine("html", pug.renderFile);
 
-mongoose.connect(config.database);
+/*mongoose.connect(config.database);
 mongoose.connection.on('connected',function(){
       console.log('Database is connected: '+config.database);
 });
 mongoose.connection.on('error',function(error){
       console.log('Database error:'+error);
 });
-
+*/
 
 app.use(function(req, res, next) {
     res.locals.userAgent = req.headers["user-agent"];
     next();
 });
 
-app.get("/", function(req, res) {
-    res.render("index", {
-        data:"Let's fuck the world"
-    });
-});
+
+app.use("/",routes)
+
 app.use(function(req, res) {
     res.status(404);
-    res.render("404.html", {
+    res.render("404", {
         urlAttempted: req.url
     });
 });
