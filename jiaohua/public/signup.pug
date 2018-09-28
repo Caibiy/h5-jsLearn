@@ -1,0 +1,17 @@
+doctype html
+html
+	include ./includes/head.pug
+	link(href='/assets/css/login.css' rel="stylesheet")
+	body
+		include ./includes/nav.pug
+		if error
+			div.alert.alert-danger.show3s  #{error}
+		div.container
+			div.login-page
+				div.form
+					div.form-head  SignUp
+					form.login-form(method="post" action="signup")
+						input(type="text" name="username" id="name" placeholder="username")
+						input(type="password" name="password" id="password" placeholder="password")
+						button(type="submit" id="signup") 注册
+	script(src='/assets/js/login.js')

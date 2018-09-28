@@ -2,6 +2,9 @@
 	margin:0;
 	padding:0;
 }
+.noborder{
+	border:0;
+}
 .nomargin{
 	margin:0!important;
 }
@@ -89,14 +92,23 @@ header.title p {
 #refresh-info:active {
         -webkit-animation: rotation 0.5s  linear;
 } 
+.show3s{
+	height:55px;
+	overflow: hidden;
+	animation: showMoment 0s linear;
+	animation-delay: 3s;
+	animation-fill-mode:forwards; 
+}
 
-@-webkit-keyframes rotation {
-        from {
-                -webkit-transform: rotate(0deg);
-        }
-        to {
-                -webkit-transform: rotate(180deg);
-        }
+@keyframes showMoment{
+	from{
+		height:55px;
+	}
+	to{
+		height:0px;
+		padding: 0px;
+		border:0px;
+	}
 }
 /**/
 .info-container{

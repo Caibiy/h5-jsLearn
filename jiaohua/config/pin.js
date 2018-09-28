@@ -1,8 +1,9 @@
 /*
-* @Author: Caibiy
-* @Date:   2018-09-27 15:48:30
-* @Last Modified by:   Caibiy
-* @Last Modified time: 2018-09-27 15:50:39
+*led->LED灯
+*dht->温湿度传感器
+*soil->土壤传感器
+*moto->电磁阀
+* @Last Modified time: 2018-09-28 15:20:12
 */
 module.exports = {
 	led:"17",

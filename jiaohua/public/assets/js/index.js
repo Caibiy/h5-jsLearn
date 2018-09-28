@@ -1,5 +1,5 @@
 $(function(){
-	//refresh button
+
 	$("#refresh-info").click(function(){
 
 	})
@@ -8,7 +8,8 @@ $(function(){
 		console.log(data);
 		socket.emit('news2',{fuck:'world'});
 	});
-	var ctx = document.getElementById("myChart").getContext('2d');
+	if(document.getElementById("myChart")){
+			var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -45,4 +46,6 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+	}
+
 })
