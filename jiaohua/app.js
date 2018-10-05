@@ -9,7 +9,6 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
-var server = require('http').Server(app)
 var io = require('socket.io')(server)
 var routes = require('./routes/index');
 var jiaohua = require('./routes/jiaohua');
@@ -47,19 +46,6 @@ passport.deserializeUser(User.deserializeUser());
 // mongoose
 mongoose.connect("mongodb://pi:pi1234@ds115753.mlab.com:15753/jiaohua");
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 
-
-io.on('connection',function(socket){
-  socket.emit('news',{hello:'world'});
-  socket.on('news2',function(data){
-    console.log(data);
-  })
-})
 
 app.listen(8080);
