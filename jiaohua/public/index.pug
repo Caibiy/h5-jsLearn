@@ -3,57 +3,78 @@ html
 	include ./includes/head.pug
 	body
 		include ./includes/nav.pug
-		if user
-			div.container
-				div.row
-					div.col-sm-8.col-xs-12
-						div.panel.panel-default
+		div.container
+			div.row
+				div.col-sm-8.col-xs-12
+					div.panel.panel-default
+						div.panel-heading
+							h3.panel-title  温湿度曲线图 
+						div.panel-body
+							canvas#myChart(width='400' height='200')
+				div.col-sm-4.col-xs-12
+					div.panel.panel-info
 							div.panel-heading
-								h3.panel-title  温湿度曲线图 #{user.root}
+								h3.panel-title  实时影像
 							div.panel-body
-								canvas#myChart(width='400' height='200')
-					div.col-sm-4.col-xs-12
-						div.panel.panel-default
+								img(style="display:block;width:100%;height:auto" src="http://192.168.1.105:8081/?action=streamer")
+					div.panel.panel-danger
 							div.panel-heading
-								h3.panel-title  信息 
-									span.fr#refresh-info
-										i.fas.fa-sync-alt
-							div.panel-body.info-container
-								div.info-item.animated.fadeInRight
-									img(src="/assets/img/humidity.png" alt="humidity" width="50px")
-									p
-										span 湿度:
-										span#humidity 30
-										span ° 
-								div.info-item.animated.fadeInRight
-									img(src="/assets/img/temperature.png" alt="temperature" width="50px")
-									p
-										span 温度:
-										span#temperature 20
-										span °
-						div.panel.panel-primary
-							div.panel-heading
-								h3.panel-title LED灯控制
+								h3.panel-title  范围选择
 							div.panel-body
-								div.checkbox
-									label.checkbox__container.nopadding.animated.fadeInRight
+								div.row
+									div.col-sm-4
+										a.btn.btn-warning(id="today") Today
+									div.col-sm-4
+										a.btn.btn-warning(href="#" id="Month")  Month
+									div.col-sm-4
+										a.btn.btn-warning(href="#" id="week")  Week
+			div.row
+				div.col-sm-4
+					div.panel.panel-default
+						div.panel-heading
+							h3.panel-title  信息 
+								span.fr#refresh-info
+									i.fas.fa-sync-alt
+						div.panel-body.info-container
+							div.info-item.animated.fadeInRight
+								img(src="/assets/img/humidity.png" alt="humidity" width="50px")
+								p
+									span 湿度:
+									span#humidity(style="transition:all 1s ease") ...
+									span ° 
+							div.info-item.animated.fadeInRight
+								img(src="/assets/img/temperature.png" alt="temperature" width="50px")
+								p
+									span 温度:
+									span#temperature(style="transition:all 1s ease")  ...
+									span °
+							div.info-item.animated.fadeInRight
+							
+				div.col-sm-4
+					div.panel.panel-primary
+						div.panel-heading
+							h3.panel-title LED灯控制
+						div.panel-body
+							div.checkbox
+								label.checkbox__container.nopadding.animated.fadeInRight
 										input#checkbox__led.checkbox__toggle(type='checkbox')
 										span.checkbox__checker
 										span.checkbox__txt-left On
 										span.checkbox__txt-right Off
 										svg.checkbox__bg(space='preserve' style='enable-background:new 0 0 110 43.76;' version='1.1' viewbox='0 0 110 43.76')
 											path.shape(d='M88.256,43.76c12.188,0,21.88-9.796,21.88-21.88S100.247,0,88.256,0c-15.745,0-20.67,12.281-33.257,12.281,S38.16,0,21.731,0C9.622,0-0.149,9.796-0.149,21.88s9.672,21.88,21.88,21.88c17.519,0,20.67-13.384,33.263-13.384,S72.784,43.76,88.256,43.76z')
-						div.panel.panel-success
-							div.panel-heading
-								h3.panel-title 水阀控制
-							div.panel-body
-								div.checkbox
-									label.checkbox__container.nopadding.animated.fadeInRight
-										input.checkbox__water.checkbox__toggle(type='checkbox')
-										span.checkbox__checker
-										span.checkbox__txt-left On
-										span.checkbox__txt-right Off
-										svg.checkbox__bg(space='preserve' style='enable-background:new 0 0 110 43.76;' version='1.1' viewbox='0 0 110 43.76')
-											path.shape(d='M88.256,43.76c12.188,0,21.88-9.796,21.88-21.88S100.247,0,88.256,0c-15.745,0-20.67,12.281-33.257,12.281,S38.16,0,21.731,0C9.622,0-0.149,9.796-0.149,21.88s9.672,21.88,21.88,21.88c17.519,0,20.67-13.384,33.263-13.384,S72.784,43.76,88.256,43.76z')
+				div.col-sm-4
+					div.panel.panel-success
+						div.panel-heading
+							h3.panel-title 水阀控制
+						div.panel-body
+							div.checkbox
+								label.checkbox__container.nopadding.animated.fadeInRight
+									input.checkbox__water.checkbox__toggle(type='checkbox')
+									span.checkbox__checker
+									span.checkbox__txt-left On
+									span.checkbox__txt-right Off
+									svg.checkbox__bg(space='preserve' style='enable-background:new 0 0 110 43.76;' version='1.1' viewbox='0 0 110 43.76')
+										path.shape(d='M88.256,43.76c12.188,0,21.88-9.796,21.88-21.88S100.247,0,88.256,0c-15.745,0-20.67,12.281-33.257,12.281,S38.16,0,21.731,0C9.622,0-0.149,9.796-0.149,21.88s9.672,21.88,21.88,21.88c17.519,0,20.67-13.384,33.263-13.384,S72.784,43.76,88.256,43.76z')
 
 	script(src='/assets/js/index.js')

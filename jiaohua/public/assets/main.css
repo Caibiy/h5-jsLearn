@@ -117,7 +117,6 @@ header.title p {
 .info-item{
 	position: relative;
 	flex:1;
-	margin-top:0.5rem;
 	padding:8px;
 }
 .info-item p{

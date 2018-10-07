@@ -1,51 +1,127 @@
 $(function(){
 
-	$("#refresh-info").click(function(){
-
-	})
-	var socket = io.connect('http://localhost:3000');
-	socket.on('news',function(data){
-		console.log(data);
-		socket.emit('news2',{fuck:'world'});
+	$.ajax({
+		url:'/api/dht/current',
+		type:'get',
+		data:{},
+		success:function(data){
+			if(data&&data.success){
+				var datas = data.data.split(',');
+				$('#temperature').text(datas[0]);
+				$('#humidity').text(datas[1]);
+			}
+		},
+		error:function(err){
+		console.log(err);
+		}
+	
 	});
-	if(document.getElementById("myChart")){
-			var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-	}
+	var datetimes = [];
+	var temps = [];
+	var hums = [];
+	var lineChartData = {
+		labels: datetimes,
+		datasets: [{
+			label: '温度',
+			borderColor: window.chartColors.red,
+			backgroundColor: window.chartColors.red,
+			fill: false,
+			data: temps,
+			yAxisID: 'y-axis-1',
+			}, {
+			label: '湿度',
+			borderColor: window.chartColors.blue,
+			backgroundColor:window.chartColors. blue,
+			fill: false,
+			data: hums,
+			yAxisID: 'y-axis-2'
+			}]
+	};
+				var ctx = document.getElementById('myChart').getContext('2d');
+			window.myLine = Chart.Line(ctx, {
+				data: lineChartData,
+				options: {
+					responsive: true,
+					hoverMode: 'index',
+					stacked: false,
+					title: {
+						display: true,
+						text: '温湿度'
+					},
+					scales: {
+						yAxes: [{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'left',
+							id: 'y-axis-1',
+						}, {
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-2',
+
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						}],
+					}
+				}
+			});
+	$.ajax({
+		url:'/api/tu/current',
+		type:'get',
+		data:[],
+		success:function(data){
+			if(data && data.data){
+				console.log(data.data)
+			}
+		}
+	})
+	$.ajax({
+		url:'/api/dht/data/today',
+		type:'get',
+		data:{},
+		success:function(data){
+			for(var d in data){
+				let date = new Date(data[d].timestamp);
+				let Y = date.getFullYear() + '-';
+				let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+				let D = date.getDate() + ' ';
+				let h = date.getHours() + ':';
+				let m = date.getMinutes(); 
+				datetimes.push(Y+M+D+h+m);
+				hums.push(data[d].humidity);
+				temps.push(data[d].temp);
+			}
+			console.log(datetimes);
+			console.log(hums);
+			console.log(temps);
+			window.myLine.update();
+
+		},
+		error:function(err){
+			console.log(err);
+		}
+	});
+			var lineChartData = {
+			labels: datetimes,
+			datasets: [{
+				label: '温度',
+				borderColor: window.chartColors.red,
+				backgroundColor: window.chartColors.red,
+				fill: false,
+				data: temps,
+				yAxisID: 'y-axis-1',
+			}, {
+				label: '湿度',
+				borderColor: window.chartColors.blue,
+				backgroundColor:window.chartColors. blue,
+				fill: false,
+				data: hums,
+				yAxisID: 'y-axis-2'
+			}]
+		};
+
 
 })
