@@ -10,11 +10,19 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var routes = require('./routes/index');
 var jiaohua = require('./routes/jiaohua');
-
 var app = express();
 var config = require('./config')
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-
+var Gpio = require('onoff').Gpio;
+var RaspiCam = require('raspicam');
+var camera  = new RaspiCam({
+	mode:"photo",
+	output:"./photo/image.jpg",
+	encoding:"jpg"
+})
+camera.start();
 app.set("view engine", "pug");
 app.set("views", path.resolve(__dirname, "public"));
 
@@ -42,6 +50,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // mongoose
 mongoose.connect("mongodb://pi:pi1234@ds115753.mlab.com:15753/jiaohua");
+
 //timestamp new Date().getTime()
 //Date getFullYear() + getMoth()+1 +getDate()
 console.log(new Date().getTime())
@@ -78,4 +87,23 @@ dConfig.queryDefault({},function(err,obj){
 });
 
 
-app.listen(8080);
+server.listen(8080);
+var LED = new Gpio(23,'out');
+jiaohua.initLED(LED);
+io.on('connection',function(socket){
+	var lightValue = LED.readSync();//LED status
+	socket.on('light',function(data){
+		lightValue = data;
+		if(lightValue != LED.readSync()){
+			LED.writeSync(lightValue);
+		}
+	})
+	socket.emit('light',lightValue);
+}
+)
+
+process.on('SIGINT',function(){
+LED.writeSync(0);
+LED.unexport();
+process.exit();
+})

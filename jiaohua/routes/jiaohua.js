@@ -6,6 +6,7 @@ var express = require('express'),
 	config = require('../config'),
 	execSync = require('child_process').execSync,
 	dht = require('../model/dht');
+var mLed;
 function isLoggedIn(req, res, next) {
 
     if (req.isAuthenticated())
@@ -45,7 +46,7 @@ router.get('/dht/data/today',function(req,res){
 })
 /**/
 router.get('/led/current',function(req,res){
-	
+	res.json({data:mLed.readSync()});
 })
 /**/
 router.get('/tu/current',function(req,res){
@@ -53,3 +54,6 @@ router.get('/tu/current',function(req,res){
 	res.json({data:result});
 })
 module.exports = router;
+module.exports.initLED = function(led){
+	mLed = led;
+}

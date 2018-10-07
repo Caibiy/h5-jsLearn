@@ -1,5 +1,11 @@
 $(function(){
-
+	var socket = io();
+	$('#checkbox__led').click(function(){
+		socket.emit('light',Number(this.checked));
+	});
+	socket.on('light',function(data){
+		document.getElementById('checkbox__led').checked = data;
+	})
 	$.ajax({
 		url:'/api/dht/current',
 		type:'get',
@@ -12,7 +18,6 @@ $(function(){
 			}
 		},
 		error:function(err){
-		console.log(err);
 		}
 	
 	});
@@ -74,7 +79,11 @@ $(function(){
 		data:[],
 		success:function(data){
 			if(data && data.data){
-				console.log(data.data)
+				if(0==data.data){
+					$('#tu').text("不缺水");
+				}else{
+					$('#tu').text("缺水");
+				}	
 			}
 		}
 	})
@@ -94,14 +103,11 @@ $(function(){
 				hums.push(data[d].humidity);
 				temps.push(data[d].temp);
 			}
-			console.log(datetimes);
-			console.log(hums);
-			console.log(temps);
 			window.myLine.update();
 
 		},
 		error:function(err){
-			console.log(err);
+			console.log(err)
 		}
 	});
 			var lineChartData = {

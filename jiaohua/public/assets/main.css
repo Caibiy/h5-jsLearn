@@ -111,13 +111,10 @@ header.title p {
 	}
 }
 /**/
-.info-container{
-	display: flex;
-}
 .info-item{
 	position: relative;
-	flex:1;
 	padding:8px;
+	border-bottom:1px solid #d3d3d3;
 }
 .info-item p{
 	display: inline-block;
